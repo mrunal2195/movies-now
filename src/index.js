@@ -5,8 +5,30 @@ import App from './App';
 import Routing from '../src/Containers/routing';
 import Home from '../src/Containers/home'
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import Reducer from './reducers/Reducer';
 
-ReactDOM.render(<Routing />, document.getElementById('root'));
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+);
+
+const store = createStore(
+    Reducer,
+    { movies: [],  status: false },
+    enhancer
+);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Routing />
+    </Provider>,
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

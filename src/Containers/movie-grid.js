@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import MovieCard from '../Components/movie-card';
 import '../styles/home.css';
+import { connect } from 'react-redux';
 
 export default class MovieGrid extends Component {
-  
-  
+
+  constructor(props){
+    super(props);
+  }
 
   renderMovies = () => {
-    let movies = ["mrunal", "Mrunal", "mrunal", "mrunal", "mrunal", "mrunal"];
+    let movies = this.props.movies || [];
     return movies.map(movie =>
-        <MovieCard/>)
-
-}
+        <MovieCard key={movie.imdbId} movie={movie}/>)
+    }
   
   
     render() {

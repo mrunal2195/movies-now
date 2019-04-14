@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/home.css';
-import MovieService from '../Services/movieservice';
-import MovieGrid from './movie-grid';
+import MovieGrid from '../Containers/movie-grid'
+import { connect } from 'react-redux';
+import { searchMovies } from '../reducers/actions';
 
-export default class Search extends Component {
+class Search extends Component {
 
-
-
-    // getMovies = () => {
-    //     MovieService.fetchMovies().then(movies => {
-    //         console.log(movies);
-    //     })
-    // }
+    constructor(props){
+        super(props);
+        this.state = {
+            word: this.props.match.params.searchWord
+        }
+    }
+    
+    componentWillMount = () => {
+        this.props.searchMovies(this.props.match.params.searchWord, 20);
+    }
 
     render() {
         return (
@@ -33,13 +37,24 @@ export default class Search extends Component {
                     </div>
                 </nav>
                 <div className="container">
-                    <div className="row movie-searchbar">
-                        Search results for .....
+                    <div className="row">
+                        search results for {this.state.word} ....
                     </div>
-                </div>
-                <div>
+                    <div className="row movie-searchbar">
+                        <MovieGrid movies={this.props.searchResults}></MovieGrid>
+                    </div>
                 </div> 
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    searchResults: state.searchResults
+});
+
+const mapDispatchToProps = dispatch => ({
+    searchMovies: (keyword, count) => dispatch(searchMovies(keyword, count))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

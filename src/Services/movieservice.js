@@ -1,16 +1,20 @@
-const APIKey = "&apikey=4d8f55e6";
-const omdb = "http://www.omdbapi.com/";
-const getMovies = "http://www.omdbapi.com/?y=2019&s=life";
+import OMDB from './omdbservice';
 
 
 
-const fetchMovies= () => fetch(getMovies+APIKey).then(response => response.json());
 
-const searchMovies = null
+const movies = OMDB.search({
+    s: 'love'
+}, 12).then(movies => movies);
+
+
+const searchMovies = (keyword, count) => OMDB.search({
+    s: keyword
+}, count).then(movies => movies);
 
 
 
 export default {
-    fetchMovies,
+    movies,
     searchMovies
 }

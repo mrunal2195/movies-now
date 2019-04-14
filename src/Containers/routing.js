@@ -13,7 +13,7 @@ export default class Routing extends Component {
                 <Route path='/home' component={Home} />
                 <Route path='/login' component={Login} />
                 <Route path="/register" component={Register}/>
-                <Route path="/search" component={Search}/>
+                <Route path="/search/s=:searchWord" component={Search}/>
             </Switch>
         </Router>
     )
