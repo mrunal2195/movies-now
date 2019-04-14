@@ -1,0 +1,48 @@
+.wbdv-nvbar {
+    background-color: #32303a;
+    margin-bottom: 50px;
+}
+
+.wbdv-movie-header{
+    font-family: sans-serif;
+}
+
+.movie-searchbar{
+    margin-bottom: 50px;
+}
+
+.wbdv-moviegrid{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; 
+}
+
+@media (min-width: 576px) {
+    .wbdv-movie-card{
+        margin: 15px ! important;
+        display: flex ! important;
+        flex: 0 0 100% ! important;
+        
+    }
+}
+
+
+@media (min-width: 768px) {
+    .wbdv-movie-card{
+        margin: 15px ! important;
+        display: flex ! important;;
+        flex: 0 0 27.33% ! important;
+        
+    }
+ }
+
+
+@media (min-width: 992px) { 
+    .wbdv-movie-card{
+        margin: 15px ! important;
+        display: flex ! important;
+        flex: 0 0 20% ! important;
+        
+    }
+ }
