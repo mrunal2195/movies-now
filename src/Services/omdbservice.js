@@ -29,6 +29,14 @@ const search = async (s, results) => {
   return movies
 }
 
+const getDetails = (imdbId) => 
+  imdb.get('/', {
+    params : {
+      i : imdbId
+    }
+  }).then(res => res.data);
+
 export default {
-  search
+  search,
+  getDetails
 }
