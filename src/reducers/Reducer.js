@@ -14,6 +14,11 @@ const reducer = (state, action) => {
                 searchResults: action.payload
             });
 
+        case 'CURRENT_USER':
+            return({
+                ...state,
+                user: action.payload
+            })
         default:
             return state;
     }

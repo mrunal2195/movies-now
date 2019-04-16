@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/home.css';
 import MovieGrid from './movie-grid';
-import MovieService from '../Services/movieservice';
 import { connect } from 'react-redux';
 import { loadMovies } from '../reducers/actions';
 
@@ -52,9 +51,12 @@ class Home extends Component {
                                     placeholder="search movie here ...." aria-label="Movie Title"
                                     aria-describedby="button-addon2" onChange={this.changeProp('searchWord')} />
                                 <div className="input-group-append">
+                                <Link to={`/search/s=${this.state.searchWord}`}>
                                     <button className="btn btn-secondary add-new-course-btn"
                                         type="button" id="button-addon2">
-                                        <Link to={`/search/s=${this.state.searchWord}`}>search</Link></button>
+                                       Search
+                                    </button>
+                                </Link>
                                 </div>
                             </div>
                         </div>

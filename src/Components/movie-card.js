@@ -3,18 +3,12 @@ import '../styles/home.css';
 
 export default class MovieCard extends Component {
 
-
-  constructor(props){
-    super(props);
-  }
-
-
   render() {
     return (
       <div class="card wbdv-movie-card">
-        <img class="card-img-top" src={this.props.movie.Poster} />
+        <img class="card-img-top" src={this.props.movie.Poster} alt=""/>
         <div class="card-body">
-          <a href="#" class="card-link">{this.props.movie.Title}</a>
+            {this.props.movie.Title}
         </div>
       </div>
     )

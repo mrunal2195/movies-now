@@ -20,7 +20,7 @@ const search = async (s, results) => {
   let movies = [];
   while (movies.length < results) {
     const res = await searchByPage(s, page++);
-    if (res.Response == 'False') {
+    if (res.Response === 'False') {
       break;
     }
     const posterMovie = res.Search.filter(m => m.Poster !== 'N/A')

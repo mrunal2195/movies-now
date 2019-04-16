@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import MovieCard from '../Components/movie-card';
 import '../styles/home.css';
-import { connect } from 'react-redux';
 
 export default class MovieGrid extends Component {
-
-  constructor(props){
-    super(props);
-  }
 
   renderMovies = () => {
     let movies = this.props.movies || [];
