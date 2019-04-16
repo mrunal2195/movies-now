@@ -1,7 +1,7 @@
 
 
 const reducer = (state, action) => {
-    switch(action.type){
+    switch (action.type) {
         case 'LOAD_MOVIES':
             return ({
                 ...state,
@@ -15,9 +15,27 @@ const reducer = (state, action) => {
             });
 
         case 'CURRENT_USER':
-            return({
+            return ({
                 ...state,
                 user: action.payload
+            })
+
+        case 'LOGIN_FAILURE':
+            return ({
+                ...state,
+                loginFailure: action.payload
+            })
+
+        case 'REGISTER_FAILURE':
+            return ({
+                ...state,
+                registerFailure: action.payload
+            })
+        
+        case 'LOGOUT':
+            return({
+                ...state,
+                user : null
             })
         default:
             return state;

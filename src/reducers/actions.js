@@ -25,7 +25,10 @@ export const registerUser = user => dispatch => {
             type: 'CURRENT_USER',
             payload: user
         })
-    })
+    }).catch(err => dispatch({
+        type: 'REGISTER_FAILURE',
+        payload: true
+    }))
 }
 
 export const loginUser = user => dispatch => {
@@ -34,5 +37,22 @@ export const loginUser = user => dispatch => {
             type: 'CURRENT_USER',
             payload: user
         })
+    }).catch(err => dispatch({
+        type: 'LOGIN_FAILURE',
+        payload: true
+    }))
+}
+
+export const updateUser = user => dispatch => {
+    Userservice.updateUser(user).then(user => {
+        dispatch({
+            type:'CURRENT_USER',
+            payload:user
+        })
     })
 }
+
+export const logout = user => ({
+    type : 'LOGOUT',
+    payload : user
+})

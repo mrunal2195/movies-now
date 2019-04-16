@@ -28,21 +28,6 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark wbdv-nvbar">
-                    <Link className="navbar-brand wbdv-movie-header" to="/home">Movies Now !!</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav ml-auto justify-content-between">
-                            <div class="navbar-nav ml-auto">
-                                <Link className="nav-item nav-link" to="/register"> Register </Link>
-                                <Link className="nav-item nav-link" to="/login">Login</Link>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
                 <div className="container">
                     <div className="row movie-searchbar">
                         <div className="col-12">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../reducers/actions'
 class Login extends Component {
@@ -13,6 +13,14 @@ class Login extends Component {
         }
     }
 
+    componentDidUpdate = () => {
+        if(this.props.user){
+            this.props.history.push('/home');
+        }else{
+            alert("Please Enter correct username and password");
+        }
+    }
+
     changeProp = prop => e => {
         this.setState({
             [prop] : e.target.value
@@ -21,7 +29,6 @@ class Login extends Component {
 
     loginUser = e => {
         e.preventDefault();
-        console.log("called from login");
         this.props.loginUser(this.state);
     }
 
@@ -29,21 +36,6 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <nav className="navbar navbar-expand-lg navbar-dark bg-dark wbdv-nvbar">
-                        <Link className="navbar-brand wbdv-movie-header" to="/home">Movies Now !!</Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div className="navbar-nav ml-auto justify-content-between">
-                                <div className="navbar-nav ml-auto">
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
                 <div className="container">
                     <form className="sign-in-form">
                         <h1>Log In Here....</h1>
@@ -87,13 +79,12 @@ class Login extends Component {
     }
 }
 
-
 const mapStateToProps = state => ({
-    User: state.user
+    user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({
     loginUser: (user) => dispatch(loginUser(user))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))

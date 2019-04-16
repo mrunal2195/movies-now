@@ -13,9 +13,14 @@ const loginUser = user => endpoint.post('/api/login', user)
   .then(response => response.data)
   .catch(err => console.log(err));
 
+const updateUser = user => endpoint.put('/api/update', user)
+  .then(response => response.data)
+  .catch(err => console.log(err));
+
 
 
 export default {
     registerUser,
-    loginUser
+    loginUser,
+    updateUser
 }

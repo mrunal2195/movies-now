@@ -18,6 +18,12 @@ class Register extends Component {
         }
     }
 
+    componentDidUpdate = () => {
+        if(this.props.user){
+            this.props.history.push('/home');
+        }
+    }
+
     registerUser = e => {
         e.preventDefault();
         console.log("called", this.state)
@@ -40,20 +46,6 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <nav className="navbar navbar-expand-lg navbar-dark bg-dark wbdv-nvbar">
-                        <Link className="navbar-brand wbdv-movie-header" to="/home">Movies Now !!</Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div className="navbar-nav ml-auto justify-content-between">
-                                <div className="navbar-nav ml-auto"></div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
                 <div className="container">
                     <form className="register-form">
                         <h1>Sign Up Here ....</h1>
@@ -135,7 +127,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-    User: state.user
+    user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({
