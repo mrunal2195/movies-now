@@ -65,3 +65,12 @@ export const getMoviedetails = imdbID => dispatch => {
         })
     })
 }
+
+export const getUsermovies = userId => dispatch => {
+    Userservice.getUsermovies(userId).then(movies => {
+        dispatch({
+            type: 'USER_MOVIES',
+            payload: movies
+        })
+    })
+}

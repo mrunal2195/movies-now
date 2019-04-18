@@ -43,6 +43,12 @@ const reducer = (state, action) => {
                 ...state,
                 currentMovie: action.payload
             })
+
+        case 'USER_MOVIES':
+            return({
+                ...state,
+                usermovies: action.payload
+            })
         default:
             return state;
     }

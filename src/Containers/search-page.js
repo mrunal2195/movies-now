@@ -24,7 +24,7 @@ class Search extends Component {
                     <div className="row">
                         search results for {this.state.word} ....
                     </div>
-                    <div className="row movie-searchbar">
+                    <div className="row movie-searchs">
                         <MovieGrid movies={this.props.searchResults}></MovieGrid>
                     </div>
                 </div> 

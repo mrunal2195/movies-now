@@ -17,7 +17,7 @@ class MovieDetails extends Component {
   }
 
   renderActors = () => {
-    const actors = this.props.movie.Actors.split(',') || [];
+    const actors = this.props.movie.actors.split(',') || [];
     const renderActors = actors.map(actor => <li className="list-group-item borderless">{actor}</li>)
     return renderActors;
   }
@@ -25,14 +25,10 @@ class MovieDetails extends Component {
   render() {
     let rottenTomatoes, critic;
     if (this.props.movie) {
-      const ratings = this.props.movie.Ratings;
+      const ratings = this.props.movie.ratings;
       rottenTomatoes = ratings[1].Value;
       critic = ratings[0].Value;
     }
-
-
-    
-
     return (
       <div>
         {console.log(this.props.movie)}
@@ -41,7 +37,7 @@ class MovieDetails extends Component {
           <div className="row">
             <div className="col-md-3 col-sm-12 justify-content-center">
               <div>
-                <img className="card-img-top movie-poster" src={this.props.movie.Poster} alt="" />
+                <img className="card-img-top movie-poster" src={this.props.movie.poster} alt="" />
               </div>
               <div>
 
@@ -49,18 +45,18 @@ class MovieDetails extends Component {
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="row movie-title">
-                <h3>{this.props.movie.Title}</h3>
+                <h3>{this.props.movie.title}</h3>
               </div>
               <div className="row movie-year">
-                <h5>{this.props.movie.Year}</h5>
+                <h5>{this.props.movie.year}</h5>
               </div>
               <div className="row movie-genre">
-                <h5>{this.props.movie.Genre}</h5>
+                <h5>{this.props.movie.genre}</h5>
               </div>
               <div className="row"></div>
               <div className="row  imdb-ratings">
                 <img className="imdb-icon rating-margin" src={imdbIcon} alt=""></img>
-                <h6 className="imdb-rate">{this.props.movie.imdbRating}</h6>
+                <h6 className="imdb-rate">{this.props.movie.imdbrating}</h6>
               </div>
               <div className="row  rotten-tomatoes">
                 <h6 className="rating-margin">Rotten tomatoes</h6><h6>{rottenTomatoes}</h6>
@@ -81,7 +77,7 @@ class MovieDetails extends Component {
             </div>
             <div className="col-md-6 col-sm-12">
               <h3>Plot</h3><br></br>
-              <p>{this.props.movie.Plot}</p>
+              <p>{this.props.movie.plot}</p>
             </div>
           </div>
           </div>}
