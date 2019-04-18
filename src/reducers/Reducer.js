@@ -31,11 +31,17 @@ const reducer = (state, action) => {
                 ...state,
                 registerFailure: action.payload
             })
-        
+
         case 'LOGOUT':
-            return({
+            return ({
                 ...state,
-                user : null
+                user: null
+            })
+            
+        case 'MOVIE_DETAILS':
+            return ({
+                ...state,
+                currentMovie: action.payload
             })
         default:
             return state;

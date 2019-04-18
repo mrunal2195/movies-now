@@ -16,9 +16,10 @@ class Login extends Component {
     componentDidUpdate = () => {
         if(this.props.user){
             this.props.history.push('/home');
-        }else{
-            alert("Please Enter correct username and password");
         }
+        // else{
+        //     alert("Please Enter correct username and password");
+        // }
     }
 
     changeProp = prop => e => {

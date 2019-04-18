@@ -56,3 +56,12 @@ export const logout = user => ({
     type : 'LOGOUT',
     payload : user
 })
+
+export const getMoviedetails = imdbID => dispatch => {
+    MovieService.getMovieDetails(imdbID).then(movie => {
+        dispatch({
+            type : 'MOVIE_DETAILS',
+            payload: movie
+        })
+    })
+}

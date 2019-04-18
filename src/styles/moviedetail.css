@@ -1,0 +1,51 @@
+.movie-detail{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.movie-genre{
+    font-style: italic;
+    margin-bottom: 60px;
+}
+
+.rating-margin{
+    margin-right: 10px;
+}
+
+.rotten-tomatoes{
+    color: red;
+    font-style: bold;
+}
+
+.imdb-icon{
+    height: 20px;
+    width: 40px;
+  
+}
+
+
+.imdb-ratings{
+    display: flex;
+    align-items: center;
+}
+
+.imdb-rate{
+    margin-top: 6px;
+}
+
+.movie-poster{
+    height: 300px;
+    width: 200px;
+}
+
+.poster-div{
+    background-color: burlywood;
+    align-content: center 
+}
+
+.borderless{
+    border: 0 none;
+}
+
+.actor-heading{
+
+}

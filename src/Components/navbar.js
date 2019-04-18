@@ -5,10 +5,6 @@ import { logout } from '../reducers/actions';
 
 class Navbar extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     logout = () => {
         this.props.logout(this.props.user);
     }

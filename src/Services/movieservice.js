@@ -2,7 +2,7 @@ import OMDB from './omdbservice';
 
 
 const movies = OMDB.search({
-    s: 'love'
+    s: 'batman'
 }, 12).then(movies => movies);
 
 

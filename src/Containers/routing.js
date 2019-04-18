@@ -6,6 +6,7 @@ import Register from '../Components/register';
 import Search from './search-page';
 import Navbar from '../Components/navbar'
 import profile from '../Components/profile';
+import MovieDetails from './moviedetails';
 
 export default class Routing extends Component {
     render() {
@@ -18,7 +19,8 @@ export default class Routing extends Component {
                         <Route path='/login' component={Login} />
                         <Route path='/profile' component={profile} />
                         <Route path="/register" component={Register} />
-                        <Route path="/search/s=:searchWord" component={Search} />
+                        <Route path="/search/:searchWord" component={Search} />
+                        <Route path="/movieDetails/movie/:imdbID" component={MovieDetails}/>
                     </Switch>
                 </div>
             </Router>

@@ -36,7 +36,7 @@ class Home extends Component {
                                     placeholder="search movie here ...." aria-label="Movie Title"
                                     aria-describedby="button-addon2" onChange={this.changeProp('searchWord')} />
                                 <div className="input-group-append">
-                                <Link to={`/search/s=${this.state.searchWord}`}>
+                                <Link to={`/search/${this.state.searchWord}`}>
                                     <button className="btn btn-secondary add-new-course-btn"
                                         type="button" id="button-addon2">
                                        Search
