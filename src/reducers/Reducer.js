@@ -49,6 +49,29 @@ const reducer = (state, action) => {
                 ...state,
                 usermovies: action.payload
             })
+
+        case "LOAD_COMMENTS":
+            return({
+                ...state,
+                comments: action.payload
+            })
+        
+        case 'ADD_COMMENTS':
+            return({
+                ...state,
+                comments: [...state.comments, action.payload]
+            })
+        
+        case 'FLAG_COMMENT':
+        let idx = state.comments.findIndex(c=>c.id === action.payload.id)
+        return ({
+            ...state,
+            comments: [
+                ...state.comments.slice(0, idx),
+                action.payload,
+                ...state.comments.slice(idx + 1)
+            ]
+        })
         default:
             return state;
     }

@@ -12,7 +12,8 @@ class MovieCard extends Component {
       this.props.history.push(`/moviedetails/movie/${this.props.movie.imdbid}`)
     }else{
       alert("Please Login to access your liked Movies");
-      this.props.history.push('/login')
+      this.props.history.push(`/moviedetails/movie/${this.props.movie.imdbid}`)
+      //this.props.history.push('/login')
     }
   }
 

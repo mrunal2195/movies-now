@@ -21,7 +21,7 @@ export default class Routing extends Component {
                         <Route path='/profile' component={profile} />
                         <Route path="/register" component={Register} />
                         <Route path="/search/:searchWord" component={Search} />
-                        <Route path="/movieDetails/movie/:imdbID" component={MovieDetails}/>
+                        <Route path="/movieDetails/movie/:imdbid" component={MovieDetails}/>
                         <Route path="/favouritemovies" component={Likedmovies}/>
                     </Switch>
                 </div>

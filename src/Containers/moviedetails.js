@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { getMoviedetails } from '../reducers/actions';
 import '../styles/moviedetail.css';
 import { imdbIcon } from '../constants';
+import Comment from './comments';
 
 
 class MovieDetails extends Component {
 
   constructor(props) {
     super(props);
-    this.props.getMoviedetails(this.props.match.params.imdbID)
+    this.props.getMoviedetails(this.props.match.params.imdbid)
   }
 
   getRatings = () => {
@@ -31,7 +32,6 @@ class MovieDetails extends Component {
     }
     return (
       <div>
-        {console.log(this.props.movie)}
         {this.props.movie &&
         <div className="container movie-detail">
           <div className="row">
@@ -80,7 +80,10 @@ class MovieDetails extends Component {
               <p>{this.props.movie.plot}</p>
             </div>
           </div>
-          </div>}
+          <div className="row justify-content-center">
+            <Comment imdbid={this.props.movie.imdbid}/>
+          </div>
+        </div>}
       </div>
     )
   }
@@ -91,7 +94,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatcherToProps = dispatch => ({
-  getMoviedetails: (imdbID) => dispatch(getMoviedetails(imdbID))
+  getMoviedetails: (imdbid) => dispatch(getMoviedetails(imdbid))
 })
 
 export default connect(mapStateToProps, mapDispatcherToProps)(MovieDetails)

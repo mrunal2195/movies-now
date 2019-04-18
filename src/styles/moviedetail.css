@@ -47,5 +47,30 @@
 }
 
 .actor-heading{
+}
 
+.flag-comment{
+    margin-top: 5px;
+    margin-right: 5px
+}
+
+.username-comment{
+    font-style: italic;
+}
+
+.comment-card{
+    margin-bottom: 10px;
+}
+
+.comment-card-body{
+    padding-top: 0% !important;
+}
+
+.comment-header{
+    margin-bottom: 14px;
+    margin-top: 6px;
+}
+
+.comment-editor{
+    margin-bottom: 5px;
 }
