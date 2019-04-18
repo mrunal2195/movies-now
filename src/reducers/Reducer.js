@@ -72,6 +72,20 @@ const reducer = (state, action) => {
                 ...state.comments.slice(idx + 1)
             ]
         })
+
+        case 'UNREPORT_COMMENT':
+            return({
+                ...state,
+                reportedComments: state.reportedComments.filter(c => c.id !== action.payload.id)
+
+            })
+
+        case 'REPORTED_COMMENTS':
+            console.log(action.payload)
+            return({
+                ...state,
+                reportedComments: action.payload
+            })
         default:
             return state;
     }

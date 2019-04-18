@@ -8,6 +8,7 @@ import Navbar from '../Components/navbar'
 import profile from '../Components/profile';
 import MovieDetails from './moviedetails';
 import Likedmovies from './likedmovies';
+import Report from './reports';
 
 export default class Routing extends Component {
     render() {
@@ -23,6 +24,7 @@ export default class Routing extends Component {
                         <Route path="/search/:searchWord" component={Search} />
                         <Route path="/movieDetails/movie/:imdbid" component={MovieDetails}/>
                         <Route path="/favouritemovies" component={Likedmovies}/>
+                        <Route path="/reports" component={Report}/>
                     </Switch>
                 </div>
             </Router>

@@ -16,11 +16,19 @@ const flagComment = (commentid, comment) => endpoint.put(`/api/comment/${comment
     .then(response => response.data)
     .catch(err => console.log(err));
 
+const getFlaggedComments = () => endpoint.get(`/api/comment/flagged`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
+
+const manageComment = (commentId, action) => endpoint.put(`/api/comment/${commentId}/${action}`)
+
 
 
 
 export default {
     addComment,
     getComments,
-    flagComment
+    flagComment,
+    getFlaggedComments,
+    manageComment
 }

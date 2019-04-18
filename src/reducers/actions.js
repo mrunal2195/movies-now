@@ -103,3 +103,31 @@ export const flagComment = (commentid, comment) => dispatch => {
         })
     })
 }
+
+export const getFlaggedComments = () => dispatch => {
+    commentservice.getFlaggedComments().then(comments => {
+        dispatch({
+            type: "REPORTED_COMMENTS",
+            payload: comments
+        })
+    })
+}
+
+export const unflagComment = (commentid) => dispatch => {
+    commentservice.manageComment(commentid, 'UNFLAG').then(comment =>{
+        dispatch({
+            type: "UNREPORT_COMMENT",
+            payload: comment
+        })
+    })
+
+}
+
+export const deleteComment = (commentid) => dispatch => {
+    commentservice.manageComment(commentid, 'DELETE').then(comment => {
+        dispatch({
+            type:"UNREPORT_COMMENT",
+            payload: comment
+        })
+    })
+}
