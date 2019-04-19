@@ -88,7 +88,6 @@ const reducer = (state, action) => {
             })
 
         case 'REPORTED_COMMENTS':
-            console.log(action.payload)
             return({
                 ...state,
                 reportedComments: action.payload

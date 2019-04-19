@@ -15,7 +15,7 @@ class MovieDetails extends Component {
 
   renderActors = () => {
     const actors = this.props.movie.actors.split(',') || [];
-    const renderActors = actors.map(actor => <li className="list-group-item borderless">{actor}</li>)
+    const renderActors = actors.map(actor => <li className="borderless">{actor}</li>)
     return renderActors;
   }
 
@@ -66,8 +66,8 @@ class MovieDetails extends Component {
           </div>
           <div className="row">
             <div className="col-md-3 col-sm-12">
-              <ul className="list-group">
-                <li class="list-group-item borderless"><h4>Actors</h4></li>
+              <ul className="">
+                <li class="borderless"><h4>Actors</h4></li>
                 {this.renderActors()}
               </ul>
             </div>

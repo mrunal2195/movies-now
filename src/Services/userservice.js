@@ -2,7 +2,9 @@ const axios = require('axios');
 
 const endpoint = axios.create({
   baseURL: 'http://localhost:8080',
+  withCredentials: true
 });
+
 
 const lowerCaseKeys = obj =>
   Object
