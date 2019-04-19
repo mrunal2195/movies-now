@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/moviedetail.css';
 import { connect } from 'react-redux';
-import {flagComment } from '../reducers/actions';
+import {flagComment, followUser, unfollowUser, getFollowedUsers } from '../reducers/actions';
+import Follow from '../Components/follow-unfollow';
 
 class CommentCard extends Component {
 
@@ -26,7 +27,10 @@ class CommentCard extends Component {
             <div class="card comment-card">
                 <div className="card-body comment-card-body">
                     <div className="d-flex justify-content-between comment-header">
-                        <h8 className="username-comment">{this.props.comment.user.firstname}</h8>
+                        <div className="d-flex justify-content-between">
+                            <h6 className="username-comment">{this.props.comment.user.firstname}</h6>
+                            <Follow followeeId = {this.props.comment.user.id}/>
+                        </div>
                         <div className="d-flex flag-comment">
                             <i class="fas fa-thumbs-down" onClick={this.flagComment}> &nbsp; {this.props.comment.flagCount}</i>
                         </div>
@@ -38,10 +42,11 @@ class CommentCard extends Component {
     }
 }
 const mapStateToProps = state => ({
-    comments: state.comments
+    user: state.user,
+    comments: state.comments,
+    followedUsers: state.followedUsers
 })
 const mapDispatcherToprops = dispatch => ({
     flagComment: (commentid, comment) => dispatch(flagComment(commentid, comment))
-
 })
 export default connect(mapStateToProps, mapDispatcherToprops)(CommentCard)

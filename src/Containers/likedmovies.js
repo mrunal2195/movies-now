@@ -2,22 +2,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUsermovies } from '../reducers/actions';
 import MovieGrid from '../Containers/movie-grid';
+import FollowingMovies from '../Containers/following-movies';
 
 class Likedmovies  extends Component {
   
   constructor(props){
     super(props);
-    this.props.getUsermovies(this.props.user.id);
   }
   
   
   render() {
-    console.log(this.props.usermovies);
     return (
       <div className="container">
-        your movies....  
-        {this.props.user && this.props.usermovies &&
-        <MovieGrid movies={this.props.usermovies}></MovieGrid>}    
+        <div className="mb-5">
+          <h4 className="border-bottom">See what your friends are doing:</h4>
+          <h7 className="text-muted">This feed shows movies you loved so far...and movie activities of your freinds</h7>  
+        </div>
+        {(this.props.user && this.props.usermovies) ? (
+          <React.Fragment>
+            <h4 className="border-bottom">Your Movies.....</h4>
+            <MovieGrid movies={this.props.usermovies}></MovieGrid>
+          </React.Fragment>
+        ):(
+          <h3>You haven't liked any movies so far... </h3>
+        )
+       } 
+        <FollowingMovies/>   
       </div>
     )
   }

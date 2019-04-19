@@ -4,10 +4,6 @@ import {unflagComment, deleteComment} from '../reducers/actions'
 
 class ReportRow extends Component {
 
-    constructor(props){
-        super(props);
-    }
-
     unflagComment = () => {
         this.props.unflagComment(this.props.comment.id);
         alert("comment unflagged");

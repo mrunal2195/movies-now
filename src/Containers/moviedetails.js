@@ -13,10 +13,6 @@ class MovieDetails extends Component {
     this.props.getMoviedetails(this.props.match.params.imdbid)
   }
 
-  getRatings = () => {
-
-  }
-
   renderActors = () => {
     const actors = this.props.movie.actors.split(',') || [];
     const renderActors = actors.map(actor => <li className="list-group-item borderless">{actor}</li>)
@@ -70,7 +66,7 @@ class MovieDetails extends Component {
           </div>
           <div className="row">
             <div className="col-md-3 col-sm-12">
-              <ul class="list-group">
+              <ul className="list-group">
                 <li class="list-group-item borderless"><h4>Actors</h4></li>
                 {this.renderActors()}
               </ul>

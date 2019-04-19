@@ -29,7 +29,7 @@ class Navbar extends Component {
                             {(user && user.id) ? (
                                     <React.Fragment>
                                         <Link className="nav-item nav-link" to="/favouritemovies"> Your favourites :) </Link>
-                                        <Link className="nav-item nav-link" to="/profile"> Hi {user.username} !! </Link>
+                                        <Link className="nav-item nav-link" to="/profile"> Hi {user.firstname} !! </Link>
                                         <Link className="nav-item nav-link" onClick={this.logout} to="/home"> Log out </Link>
                                     </React.Fragment>
                                 ) : (

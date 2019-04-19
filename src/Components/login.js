@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser } from '../reducers/actions'
+import { loginUser, getFollowedUsers } from '../reducers/actions'
 class Login extends Component {
 
 
@@ -42,7 +42,7 @@ class Login extends Component {
                         <h1>Log In Here....</h1>
                         <br />
                         <div className="form-group row">
-                            <label for="username" className="col-sm-2 col-form-label">
+                            <label className="col-sm-2 col-form-label">
                                 Username
                         </label>
                             <div className="col-sm-6">
@@ -51,7 +51,7 @@ class Login extends Component {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label for="password" className="col-sm-2 col-form-label">
+                            <label className="col-sm-2 col-form-label">
                                 Password
                            </label>
                             <div className="col-sm-6">
@@ -85,7 +85,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    loginUser: (user) => dispatch(loginUser(user))
+    loginUser: (user) => dispatch(loginUser(user)),
+    getFollowedUsers: (userId) => dispatch(getFollowedUsers(userId))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))

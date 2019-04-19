@@ -46,7 +46,8 @@
     border: 0 none;
 }
 
-.actor-heading{
+.wbdv-movie-card{
+    border: 0 none;
 }
 
 .flag-comment{
@@ -56,6 +57,8 @@
 
 .username-comment{
     font-style: italic;
+    font-weight: bold;
+    margin-right: 5px;
 }
 
 .comment-card{
@@ -63,7 +66,7 @@
 }
 
 .comment-card-body{
-    padding-top: 0% !important;
+    padding-top: 2% !important;
 }
 
 .comment-header{

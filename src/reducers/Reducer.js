@@ -50,13 +50,20 @@ const reducer = (state, action) => {
                 usermovies: action.payload
             })
 
+        case 'LIKE_MOVIE':
+            return({
+                ...state,
+                usermovies: [...state.usermovies, action.payload]
+
+            })
+
         case "LOAD_COMMENTS":
             return({
                 ...state,
                 comments: action.payload
             })
         
-        case 'ADD_COMMENTS':
+        case 'ADD_COMMENT':
             return({
                 ...state,
                 comments: [...state.comments, action.payload]
@@ -86,6 +93,30 @@ const reducer = (state, action) => {
                 ...state,
                 reportedComments: action.payload
             })
+
+        case 'FOLLOW_USER':
+            return({
+                ...state,
+                followedUsers: [...state.followedUsers, action.payload]
+            })
+        case 'UNFOLLOW_USER':
+            return({
+                ...state,
+                followedUsers : state.followedUsers.filter(f => f.id !== action.payload.id)
+            })
+        
+        case "FOLLOWED_USERS":
+            return({
+                ...state,
+                followedUsers: action.payload
+            })
+
+        case 'FOLLOWER_MOVIES':
+            return({
+                ...state,
+                followermovies: action.payload
+            })
+
         default:
             return state;
     }

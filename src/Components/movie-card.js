@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import '../styles/home.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Userservice  from '../Services/userservice';
+import { likeMovie } from '../reducers/actions';
+import Userservice from '../Services/userservice';
 
 class MovieCard extends Component {
 
 
   goToMovieDetails = () => {
-    if(this.props.user){
+    if (this.props.user) {
       this.props.history.push(`/moviedetails/movie/${this.props.movie.imdbid}`)
-    }else{
+    } else {
       alert("Please Login to access your liked Movies");
-      this.props.history.push(`/moviedetails/movie/${this.props.movie.imdbid}`)
-      //this.props.history.push('/login')
+      this.props.history.push('/login')
     }
   }
 
@@ -21,38 +21,45 @@ class MovieCard extends Component {
     const movie = {
       imdbid: this.props.movie.imdbid,
       title: this.props.movie.title,
-      poster: this.props.movie.poster 
+      poster: this.props.movie.poster
     }
-    if(this.props.user){
-      Userservice.likeMovie(this.props.user.id, movie).then(movie => movie).then(alert("liked movie"));
-    }else{
+    if (this.props.user) {
+    this.props.likeMovie(this.props.user.id, movie)
+    } else {
       alert("Please Login to access your liked Movies");
     }
   }
 
   render() {
+    let isLiked = null
+    if(this.props.usermovies){
+      isLiked = this.props.usermovies.filter(m => m.imdbid === this.props.movie.imdbid)[0];
+      console.log("isliked", isLiked);
+    }
     return (
-      <div className="card wbdv-movie-card">
-        <img className="card-img-top" src={this.props.movie.poster} alt="" onClick={this.goToMovieDetails}/>
-        <div className="card-body">
-          <div className="row">
-            <div className="col-8" onClick={this.goToMovieDetails}>
-            {this.props.movie.title}
-            </div>
-            <div className="col-4">
-              <i className="fas fa-thumbs-up float-right" onClick={this.likeMovie}></i>
-            </div>
-          </div>
-         
-         
+      <div className="card m-4 movie-card">
+        <div className="movie-image">
+          <img className="card-img-top" src={this.props.movie.poster} alt="" onClick={this.goToMovieDetails} />
         </div>
+        <div className="card-body">
+          <h6 onClick={this.goToMovieDetails}> {this.props.movie.title}</h6></div>
+        {(!isLiked) &&
+        <div className="card-footer">
+          <i className="fas fa-thumbs-up float-right" onClick={this.likeMovie}></i>
+        </div>
+        }
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  usermovies: state.usermovies
 })
 
-export default withRouter(connect(mapStateToProps)(MovieCard))
+const mapDispatchToProps = dispatch => ({
+  likeMovie: (userId, movie) => dispatch(likeMovie(userId, movie))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieCard))

@@ -11,11 +11,13 @@
     margin-bottom: 50px;
 }
 
-.wbdv-moviegrid{
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%; 
+.movie-image {
+    height: 300px;
+    width: 200px;
+}
+
+.movie-card {
+    max-width: 200px;
 }
 
 @media (min-width: 576px) {

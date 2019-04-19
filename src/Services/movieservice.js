@@ -11,7 +11,7 @@ const lowerCaseKeys = obj =>
 
 
 const movies = OMDB.search({
-    s: 'batman'
+    s: 'life'
 }, 12).then(movies => movies).then(movies => movies.map(m => lowerCaseKeys(m)));
 
 

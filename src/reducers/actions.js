@@ -1,7 +1,7 @@
 import MovieService from '../Services/movieservice';
 import Userservice from '../Services/userservice';
-import CommentService from '../Services/commentservice';
 import commentservice from '../Services/commentservice';
+import userservice from '../Services/userservice';
 
 export const loadMovies = () => dispatch => {
     MovieService.movies.then(movies => {
@@ -39,6 +39,8 @@ export const loginUser = user => dispatch => {
             type: 'CURRENT_USER',
             payload: user
         })
+        getUsermovies(user.id)(dispatch);
+        getFollowedUsers(user.id)(dispatch);
     }).catch(err => dispatch({
         type: 'LOGIN_FAILURE',
         payload: true
@@ -129,5 +131,52 @@ export const deleteComment = (commentid) => dispatch => {
             type:"UNREPORT_COMMENT",
             payload: comment
         })
+    })
+}
+
+export const getFollowedUsers = (userid) => dispatch => {
+    userservice.getFollowedUsers(userid).then(users => {
+        dispatch({
+            type: 'FOLLOWED_USERS',
+            payload: users
+        })
+    })
+}
+
+
+export const followUser = (userId, followerId) => dispatch => {
+    userservice.followUser(userId, followerId).then(user => {
+        dispatch({
+            type: "FOLLOW_USER",
+            payload: user
+        })
+    })
+}
+
+export const unfollowUser = (userId, followerId) => dispatch => {
+    userservice.unfollowUser(userId, followerId).then(user => {
+        dispatch({
+            type: 'UNFOLLOW_USER',
+            payload: user
+        })
+    })
+}
+
+export const getMoviesOfFollowers = (userId) => dispatch => {
+    userservice.getMoviesOfFollowers(userId).then(followerMovies =>{
+        dispatch({
+            type: 'FOLLOWER_MOVIES',
+            payload: followerMovies
+        })
+    })
+}
+
+export const likeMovie = (userId, movie) => dispatch => {
+    userservice.likeMovie(userId, movie).then(movie =>{
+        dispatch({
+            type: 'LIKE_MOVIE',
+            payload: movie
+        })
+        alert("Movie Has been added to your favourites:)")
     })
 }
