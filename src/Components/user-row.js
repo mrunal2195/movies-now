@@ -10,6 +10,11 @@ class UserRow extends Component {
         <td>{this.props.user.email}</td>
         <td>{this.props.user.role}</td>
         <td>{this.props.user.isFlagged === false ? "Yes" : "No"}</td>
+        <td>
+          <span className="row">
+            <i className="col fas fa-trash"></i>
+          </span>
+        </td>
       </tr>
     )
   }

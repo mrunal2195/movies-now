@@ -21,6 +21,7 @@ export default class UserListAdmin extends Component {
           <th scope="col">Email</th>
           <th scope="col">Role</th>
           <th scope="col">isFlagged</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
