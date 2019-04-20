@@ -9,9 +9,12 @@ const lowerCaseKeys = obj =>
             [key.toLowerCase()]: val
         }), {})
 
+const currentYear = new Date().getFullYear();
+const previousYearRange = currentYear - 2;
 
 const movies = OMDB.search({
-    s: 'life'
+    s: 'life',
+    y: currentYear + '-' + previousYearRange
 }, 12).then(movies => movies).then(movies => movies.map(m => lowerCaseKeys(m)));
 
 
