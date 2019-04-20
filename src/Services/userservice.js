@@ -5,6 +5,7 @@ const endpoint = axios.create({
   withCredentials: true
 });
 
+var currentUser = null;
 
 const lowerCaseKeys = obj =>
   Object
@@ -30,6 +31,7 @@ const loginUser = user => endpoint.post('/api/login', user)
   .then(user => {
     if (!user)
       throw new Error("Invalid Username or Password");
+    currentUser = user;
     return user;
   })
   .catch(err => alert(err.message));
@@ -68,7 +70,11 @@ const getMoviesOfFollowers = (userId) => endpoint.get(`/api/users/${userId}/foll
   .then(response => response.data)
   .catch(err => console.log(err))
 
-
+const getAllUsersForAdmin = () => endpoint.get(`/api/users`)
+  .then(response => currentUser != null && currentUser.role === 'ADMIN' ? 
+    response.data.filter(r => r.id !== currentUser.id)
+    : [])
+  .catch(err => console.log(err))
 
 export default {
   registerUser,
@@ -79,5 +85,6 @@ export default {
   followUser,
   unfollowUser,
   getFollowedUsers,
-  getMoviesOfFollowers
+  getMoviesOfFollowers,
+  getAllUsersForAdmin
 }
