@@ -23,7 +23,6 @@ class Navbar extends Component {
     }
     render() {
         const user = this.props.user;
-        console.log(user);
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark wbdv-nvbar">

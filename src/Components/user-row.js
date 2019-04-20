@@ -3,6 +3,15 @@ import '../styles/home.css';
 import Userservice from '../Services/userservice';
 
 class UserRow extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
+  deleteUser = (userId) => {
+    console.log(userId)
+    this.props.deleteUser(userId);
+  }
   render() {
     return (
       <tr>
@@ -12,7 +21,7 @@ class UserRow extends Component {
         <td>{this.props.user.isFlagged === false ? "Yes" : "No"}</td>
         <td>
           <span className="row">
-            <i className="col fas fa-trash"></i>
+            <i className="col fas fa-trash" onClick={() => this.deleteUser(this.props.user.id)}></i>
           </span>
         </td>
       </tr>

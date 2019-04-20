@@ -4,12 +4,17 @@ import '../styles/home.css';
 import MovieGrid from './movie-grid';
 import UserListAdmin from './user-list-admin';
 import { connect } from 'react-redux';
-import { loadMovies,getAllUsersForAdmin } from '../reducers/actions';
+import { loadMovies,getAllUsersForAdmin,deleteUser } from '../reducers/actions';
 
 class Home extends Component {
 
     constructor(props){
         super(props);
+    }
+
+    deleteUser = (userId) => {
+        console.log(userId)
+        this.props.deleteUser(userId)
     }
 
     componentWillMount(){
@@ -23,7 +28,7 @@ class Home extends Component {
             <div>
                 <div className="container">
                     <MovieGrid movies={this.props.movies}></MovieGrid>
-                    {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
+                    {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin deleteUser={this.deleteUser} allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
                 </div>
             </div>
         )
@@ -42,7 +47,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     
     getMovies: () => dispatch(loadMovies()),
-    getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin())
+    getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin()),
+    deleteUser: (userId) => dispatch(deleteUser(userId))
    
 })
 
