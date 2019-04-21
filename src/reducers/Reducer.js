@@ -116,6 +116,12 @@ const reducer = (state, action) => {
                 followermovies: action.payload
             })
 
+        case 'ALL_USERS_ADMIN':
+            return({
+                ...state,
+                nonAdminUsers: action.payload
+            })
+
         default:
             return state;
     }

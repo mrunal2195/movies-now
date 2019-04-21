@@ -39,12 +39,25 @@ export const loginUser = user => dispatch => {
             type: 'CURRENT_USER',
             payload: user
         })
-        getUsermovies(user.id)(dispatch);
-        getFollowedUsers(user.id)(dispatch);
+        if(user.role !== "ADMIN"){
+            getUsermovies(user.id)(dispatch);
+            getFollowedUsers(user.id)(dispatch);
+        }else{
+            getAllUsersForAdmin()(dispatch);
+        }
     }).catch(err => dispatch({
         type: 'LOGIN_FAILURE',
         payload: true
     }))
+}
+
+export const getAllUsersForAdmin = () => dispatch => {
+    Userservice.getAllUsersForAdmin().then(users => {
+        dispatch({
+            type:'ALL_USERS_ADMIN',
+            payload:users
+        })
+    })
 }
 
 export const updateUser = user => dispatch => {
