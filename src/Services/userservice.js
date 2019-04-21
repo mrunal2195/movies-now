@@ -5,7 +5,7 @@ const endpoint = axios.create({
   withCredentials: true
 });
 
-var currentUser = null;
+let currentUser = null;
 
 const lowerCaseKeys = obj =>
   Object
@@ -22,6 +22,7 @@ const registerUser = user => endpoint.post('/api/register', user)
   .then(user => {
     if (!user)
       throw new Error("Username Already Exists, try some other username");
+    currentUser = user;
     return user;
   })
   .catch(error =>alert(error.message));
@@ -35,6 +36,11 @@ const loginUser = user => endpoint.post('/api/login', user)
     return user;
   })
   .catch(err => alert(err.message));
+
+
+const getProfile = () => endpoint.get('/api/profile')
+  .then(response => response.data)
+  .catch(err => console.log(err));
 
 const updateUser = user => endpoint.put('/api/update', user)
   .then(response => response.data)
@@ -79,6 +85,7 @@ const getAllUsersForAdmin = () => endpoint.get(`/api/users`)
 export default {
   registerUser,
   loginUser,
+  getProfile,
   updateUser,
   likeMovie,
   getUsermovies,

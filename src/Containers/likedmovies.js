@@ -32,7 +32,7 @@ class Likedmovies  extends Component {
 
 const mapStateToprops = state => ({
   user: state.user,
-  usermovies: state.usermovies
+  usermovies: state.usermovies || []
 })
 
 const mapDispatchToProps = dispatch => ({

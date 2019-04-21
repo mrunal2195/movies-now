@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Reducer from './reducers/Reducer';
+import { getUserProfile } from './reducers/actions';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -20,6 +21,8 @@ const store = createStore(
     { movies: [], comments: [], status: false },
     enhancer
 );
+
+store.dispatch(getUserProfile());
 
 ReactDOM.render(
     <Provider store={store}>

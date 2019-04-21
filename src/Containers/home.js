@@ -18,7 +18,8 @@ class Home extends Component {
             <div>
                 <div className="container">
                     <MovieGrid movies={this.props.movies}></MovieGrid>
-                    {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
+                    {(this.props.user && this.props.user.role === 'ADMIN') && 
+                        (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
                 </div>
             </div>
         )
@@ -26,19 +27,15 @@ class Home extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return ({
-       movies : state.user && state.user.role === 'ADMIN' ? [] : state.movies,
-       user: state.user,
-       allUsersForAdmin: state.nonAdminUsers
-    })
-};
+const mapStateToProps = (state) => ({
+    movies : state.user && state.user.role === 'ADMIN' ? [] : state.movies,
+    user: state.user,
+    allUsersForAdmin: state.nonAdminUsers
+})
 
 const mapDispatchToProps = (dispatch) => ({
-    
     getMovies: () => dispatch(loadMovies()),
     getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin())
-   
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
