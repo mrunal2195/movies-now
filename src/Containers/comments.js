@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addComment, getComments } from '../reducers/actions';
 import CommentCard from '../Components/comment-card';
-
+import '../styles/moviedetail.css';
 
 
 class Comment extends Component {
@@ -44,7 +44,7 @@ class Comment extends Component {
 
     render() {
         return (
-            <div className="col-md-6 col-sm-12">
+            <div className="comments-section">
                 <h2>Comments</h2>
                 {this.renderComments()}
                 <div className="form">
