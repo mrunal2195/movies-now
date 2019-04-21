@@ -5,11 +5,7 @@ import MovieGrid from '../Containers/movie-grid';
 import FollowingMovies from '../Containers/following-movies';
 
 class Likedmovies  extends Component {
-  
-  constructor(props){
-    super(props);
-  }
-  
+
   
   render() {
     return (

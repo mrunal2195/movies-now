@@ -50,8 +50,7 @@ class Comment extends Component {
                 <div className="form">
                     <div className="form-group">
                         <textarea className="form-control comment-editor" rows="3" 
-                            placeholder="write your comment here" onChange={this.changeProp('comment')}>
-                            {this.state.comment}
+                            placeholder="write your comment here" onChange={this.changeProp('comment')} value={this.state.comment}>
                         </textarea>
                         <button className="btn btn-dark mb-2 float-right"onClick={this.addComment}>comment</button>
                     </div>

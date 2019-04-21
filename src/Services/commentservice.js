@@ -22,6 +22,8 @@ const getFlaggedComments = () => endpoint.get(`/api/comment/flagged`)
     .catch(err => console.log(err));
 
 const manageComment = (commentId, action) => endpoint.put(`/api/comment/${commentId}/${action}`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 
 
 

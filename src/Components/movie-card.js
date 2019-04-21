@@ -3,7 +3,6 @@ import '../styles/home.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { likeMovie } from '../reducers/actions';
-import Userservice from '../Services/userservice';
 
 class MovieCard extends Component {
 
