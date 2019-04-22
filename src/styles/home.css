@@ -1,5 +1,5 @@
 .wbdv-nvbar {
-    background-color: #ff424f !important;
+    background-color: #32303a;
     margin-bottom: 50px;
 }
 
@@ -28,7 +28,7 @@
 .add-new-course-btn:hover, 
 .add-new-course-btn:active, 
 .add-new-course-btn:focus {
-    background: #ff424f !important;
+    background: #343a40 !important;
     border: 0px !important;
 }
 
@@ -36,13 +36,9 @@
 .search-bar-design:hover,
 .search-bar-design:focus,
 .search-bar-design:active {
-    background: #ff424f;
+    background: #343a40;
     border: 0px;
     border-bottom: 1px solid #fff;
-    color: #fff;
-}
-
-.search-bar-design::placeholder {
     color: #fff;
 }
 
