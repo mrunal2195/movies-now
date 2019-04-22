@@ -20,6 +20,10 @@
     max-width: 200px;
 }
 
+.like-movie {
+    cursor: pointer;
+}
+
 @media (min-width: 576px) {
     .wbdv-movie-card{
         margin: 15px ! important;

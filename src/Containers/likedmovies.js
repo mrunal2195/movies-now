@@ -5,11 +5,7 @@ import MovieGrid from '../Containers/movie-grid';
 import FollowingMovies from '../Containers/following-movies';
 
 class Likedmovies  extends Component {
-  
-  constructor(props){
-    super(props);
-  }
-  
+
   
   render() {
     return (
@@ -36,7 +32,7 @@ class Likedmovies  extends Component {
 
 const mapStateToprops = state => ({
   user: state.user,
-  usermovies: state.usermovies
+  usermovies: state.usermovies || []
 })
 
 const mapDispatchToProps = dispatch => ({

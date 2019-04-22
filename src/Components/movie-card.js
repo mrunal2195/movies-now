@@ -3,7 +3,6 @@ import '../styles/home.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { likeMovie } from '../reducers/actions';
-import Userservice from '../Services/userservice';
 
 class MovieCard extends Component {
 
@@ -45,7 +44,7 @@ class MovieCard extends Component {
           <h6 onClick={this.goToMovieDetails}> {this.props.movie.title}</h6></div>
         {(!isLiked) &&
         <div className="card-footer">
-          <i className="fas fa-thumbs-up float-right" onClick={this.likeMovie}></i>
+          <i className="fas fa-thumbs-up float-right like-movie" onClick={this.likeMovie}></i>
         </div>
         }
       </div>

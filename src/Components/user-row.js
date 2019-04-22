@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../styles/home.css';
-import Userservice from '../Services/userservice';
 
 class UserRow extends Component {
 

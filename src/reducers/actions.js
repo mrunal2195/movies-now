@@ -27,6 +27,8 @@ export const registerUser = user => dispatch => {
             type: 'CURRENT_USER',
             payload: user
         })
+        getUsermovies(user.id)(dispatch);
+        getFollowedUsers(user.id)(dispatch);
     }).catch(err => dispatch({
         type: 'REGISTER_FAILURE',
         payload: true
@@ -49,6 +51,20 @@ export const loginUser = user => dispatch => {
         type: 'LOGIN_FAILURE',
         payload: true
     }))
+}
+
+
+export const getUserProfile = () => dispatch => {
+    Userservice.getProfile().then(user => {
+        if(user !== ""){
+            dispatch({
+                type: 'CURRENT_USER',
+                payload: user
+            })
+            getUsermovies(user.id)(dispatch);
+            getFollowedUsers(user.id)(dispatch);
+        }
+    })
 }
 
 export const getAllUsersForAdmin = () => dispatch => {

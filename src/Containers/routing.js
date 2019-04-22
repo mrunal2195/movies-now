@@ -9,6 +9,7 @@ import profile from '../Components/profile';
 import MovieDetails from './moviedetails';
 import Likedmovies from './likedmovies';
 import Report from './reports';
+import  AuthenticatedRoute from '../Components/authenticated-route'
 
 export default class Routing extends Component {
     render() {
@@ -22,12 +23,12 @@ export default class Routing extends Component {
                         )}/>
                         <Route path='/home' component={Home} />
                         <Route path='/login' component={Login} />
-                        <Route path='/profile' component={profile} />
+                        <AuthenticatedRoute path='/profile' component={profile} />
                         <Route path="/register" component={Register} />
                         <Route path="/search/:searchWord" component={Search} />
-                        <Route path="/movieDetails/movie/:imdbid" component={MovieDetails}/>
-                        <Route path="/favouritemovies" component={Likedmovies}/>
-                        <Route path="/reports" component={Report}/>
+                        <AuthenticatedRoute path="/movieDetails/movie/:imdbid" component={MovieDetails}/>
+                        <AuthenticatedRoute path="/favouritemovies" component={Likedmovies}/>
+                        <AuthenticatedRoute path="/reports" component={Report}/>
                     </Switch>
                 </div>
             </Router>
