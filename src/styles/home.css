@@ -24,6 +24,24 @@
     cursor: pointer;
 }
 
+.add-new-course-btn, 
+.add-new-course-btn:hover, 
+.add-new-course-btn:active, 
+.add-new-course-btn:focus {
+    background: #343a40 !important;
+    border: 0px !important;
+}
+
+.search-bar-design,
+.search-bar-design:hover,
+.search-bar-design:focus,
+.search-bar-design:active {
+    background: #343a40;
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
 @media (min-width: 576px) {
     .wbdv-movie-card{
         margin: 15px ! important;

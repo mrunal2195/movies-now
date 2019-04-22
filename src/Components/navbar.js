@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../reducers/actions';
+import '../styles/home.css';
 
 class Navbar extends Component {
 
@@ -33,7 +34,7 @@ class Navbar extends Component {
                                 <div className="row movie-searchbar w-100">
                                     <div className="col-12">
                                         <div className="input-group">
-                                            <input type="text" className="form-control"
+                                            <input type="text" className="form-control search-bar-design"
                                                 placeholder="search movie here ...." aria-label="Movie Title"
                                                 aria-describedby="button-addon2" onChange={this.changeProp('searchWord')} />
                                             <div className="input-group-append">
