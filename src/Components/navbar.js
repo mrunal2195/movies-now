@@ -26,7 +26,7 @@ class Navbar extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <Link className="navbar navbar-brand wbdv-movie-header" to="/home">Movies Now !!</Link>
+                    <Link className="navbar navbar-brand wbdv-movie-header flex-fill" to="/home">Movies Now !!</Link>
                     <div className="navbar-collapse collapse">
                         <ul className="navbar-nav w-100 justify-content-center d-flex flex-fill w-100">
                             {(user && user.role === 'ADMIN') ? (<></>) :(
