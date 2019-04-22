@@ -20,11 +20,13 @@ class MovieDetails extends Component {
   }
 
   render() {
-    let rottenTomatoes, critic;
+    let rottenTomatoes, critic, imdbRatings;
     if (this.props.movie) {
-      const ratings = this.props.movie.ratings;
-      rottenTomatoes = ratings[1].Value;
-      critic = ratings[0].Value;
+      const ratings = this.props.movie.ratings || {};
+      if(ratings[1])
+        rottenTomatoes = ratings[1].Value || 0;
+      if(ratings[2])
+        critic = ratings[0].Value || 0;
     }
     return (
       <div>
@@ -33,7 +35,7 @@ class MovieDetails extends Component {
             <div className="row">
               <div className="col-lg-3 col-md-4 col-sm-12 justify-content-center">
                 <div>
-                  <img className="card-img-top movie-poster" src={this.props.movie.poster} alt="" />
+                  <img className="card-img-top movie-poster" src={this.props.movie.poster} alt="Image is not available" />
                 </div>
                 <div>
                 </div>

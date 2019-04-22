@@ -44,6 +44,12 @@ const getProfile = () => endpoint.get('/api/profile')
 
 const updateUser = user => endpoint.put('/api/update', user)
   .then(response => response.data)
+  .then(user => {
+    if(user){
+      alert("User Profile has been updated Properly");
+    }
+    return user;
+  })
   .catch(err => console.log(err));
 
 const likeMovie = (userId, movie) => endpoint.post(`/api/users/${userId}/movie`, movie)

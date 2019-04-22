@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {followUser, unfollowUser} from '../reducers/actions';
+import '../styles/moviedetail.css';
 
 class Follow extends Component {
 
@@ -18,10 +19,10 @@ class Follow extends Component {
     return (
       <div>
         {(isFollow) &&
-            <i className="fas fa-user-plus" onClick={this.unfollowUser}></i>
+            <i className="fas fa-user-plus unfollow" onClick={this.unfollowUser}></i>
         }
         {(!isFollow) &&
-            <i className="far fa-user" onClick={this.followUser}></i>
+            <i className="far fa-user follow" onClick={this.followUser}></i>
         }
       
       </div>

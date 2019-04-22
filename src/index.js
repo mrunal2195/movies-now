@@ -18,7 +18,7 @@ const enhancer = composeEnhancers(
 
 const store = createStore(
     Reducer,
-    { movies: [], comments: [], status: false },
+    { movies: [], comments: [], status: false},
     enhancer
 );
 

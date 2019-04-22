@@ -53,8 +53,20 @@
 
 .flag-comment{
     margin-top: 5px;
-    margin-right: 5px
+    margin-right: 5px;
 }
+
+.flag-comment {
+    cursor: pointer;
+}
+
+.follow{
+    cursor: pointer;
+}
+.unfollow{
+    cursor: pointer;
+}
+
 
 .username-comment{
     font-style: italic;
