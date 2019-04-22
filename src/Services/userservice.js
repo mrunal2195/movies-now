@@ -88,6 +88,10 @@ const getAllUsersForAdmin = () => endpoint.get(`/api/users`)
     : [])
   .catch(err => console.log(err))
 
+const deleteUser = (userId) => endpoint.delete(`/api/users/${userId}`)
+  .then(response => response.data)
+  .catch(err => console.log(err))
+
 export default {
   registerUser,
   loginUser,
@@ -99,5 +103,6 @@ export default {
   unfollowUser,
   getFollowedUsers,
   getMoviesOfFollowers,
-  getAllUsersForAdmin
+  getAllUsersForAdmin,
+  deleteUser
 }

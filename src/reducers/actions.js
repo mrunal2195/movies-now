@@ -191,6 +191,12 @@ export const unfollowUser = (userId, followerId) => dispatch => {
     })
 }
 
+export const deleteUser = (userId) => dispatch => {
+    userservice.deleteUser(userId).then(response => {
+        getAllUsersForAdmin()(dispatch);
+    })
+}
+
 export const getMoviesOfFollowers = (userId) => dispatch => {
     userservice.getMoviesOfFollowers(userId).then(followerMovies =>{
         dispatch({

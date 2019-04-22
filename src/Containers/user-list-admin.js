@@ -5,10 +5,9 @@ import '../styles/home.css';
 export default class UserListAdmin extends Component {
 
   renderUserList = () => {
-    console.log(this.props)
     let allUsersForAdmin = this.props.allUsersForAdmin || [];
     return allUsersForAdmin.map(user =>
-      <UserRow key={user.id} user={user} />)
+      <UserRow key={user.id} user={user} deleteUser={this.props.deleteUser}/>)
   }
 
 

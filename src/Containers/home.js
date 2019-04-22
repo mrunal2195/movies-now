@@ -3,10 +3,9 @@ import '../styles/home.css';
 import MovieGrid from './movie-grid';
 import UserListAdmin from './user-list-admin';
 import { connect } from 'react-redux';
-import { loadMovies,getAllUsersForAdmin } from '../reducers/actions';
+import { loadMovies,getAllUsersForAdmin,deleteUser } from '../reducers/actions';
 
 class Home extends Component {
-
     componentWillMount(){
         this.props.getMovies();
         this.props.getAllUsersForAdmin();
