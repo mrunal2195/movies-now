@@ -21,8 +21,14 @@ class Home extends Component {
         })
     }
 
+    deleteUser = (userId) => {
+        console.log(userId)
+        this.props.deleteUser(userId)
+    }
+
     componentWillMount(){
         this.props.getMovies();
+        this.props.getAllUsersForAdmin();
     }
 
 
@@ -48,7 +54,7 @@ class Home extends Component {
                         </div>
                     </div>
                     <MovieGrid movies={this.props.movies}></MovieGrid>
-                    {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
+                    {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin deleteUser={this.deleteUser} allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
                 </div>
             </div>
         )
@@ -57,15 +63,18 @@ class Home extends Component {
 
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return ({
-       movies : state.movies,
+       movies : state.user && state.user.role === 'ADMIN' ? [] : state.movies,
+       user: state.user,
        allUsersForAdmin: state.nonAdminUsers
     })
 };
 
 const mapDispatchToProps = (dispatch) => ({
     getMovies: () => dispatch(loadMovies()),
-    getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin())
+    getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin()),
+    deleteUser: (userId) => dispatch(deleteUser(userId))
    
 })
 
