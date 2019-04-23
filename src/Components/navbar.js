@@ -15,11 +15,11 @@ class Navbar extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark wbdv-nvbar">
-                    <Link className="navbar navbar-brand wbdv-movie-header flex-fill" to="/home">Movies Now !!</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <Link className="navbar-brand wbdv-movie-header" to="/home">Movies Now !!</Link>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuItems">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="navbar-collapse collapse flex-fill dual-collapse2">
+                    <div id="menuItems" className="collapse navbar-collapse">
                         <ul className="navbar-nav ml-auto ">
                             {(user && user.id && user.role === 'MODERATOR') && (
                                 <Link className="nav-item nav-link" to="/reports"> Reports </Link>
@@ -44,6 +44,7 @@ class Navbar extends Component {
                                 </React.Fragment>)}
                         </ul>
                     </div>
+                    
                 </nav>
             </div>
         )

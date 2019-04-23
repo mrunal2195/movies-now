@@ -72,7 +72,7 @@ class MovieDetails extends Component {
             <div className="row actors-plot">
               <div className="col-lg-3 col-md-4 col-sm-12">
                 <ul className="list-group actors-group">
-                  <li className="list-group-item active"><h4>Actors</h4></li>
+                  <li className="list-group-item list-group-item-secondary"><h4>Actors</h4></li>
                   {this.renderActors()}
                 </ul>
               </div>
