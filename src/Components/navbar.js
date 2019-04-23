@@ -18,35 +18,34 @@ class Navbar extends Component {
                     <Link className="navbar navbar-brand wbdv-movie-header flex-fill" to="/home">Movies Now !!</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                         <span className="navbar-toggler-icon"></span>
-                    </button>    
+                    </button>
                     <div className="navbar-collapse collapse flex-fill dual-collapse2">
                         <ul className="navbar-nav ml-auto ">
                             {(user && user.id && user.role === 'MODERATOR') && (
-                                    <Link className="nav-item nav-link" to="/reports"> Reports </Link>
-                                )}
-                                {(user && user.id && user.role !== 'ADMIN') && (
-                                        <React.Fragment>
-                                            <Link className="nav-item nav-link text-white" to="/favouritemovies"> Your favourites :) </Link>
-                                            <Link className="nav-item nav-link text-white" to="/profile"> Hi {user.firstname} !! </Link>
-                                            <Link className="nav-item nav-link text-white" onClick={this.logout} to="/home"> Log out </Link>
-                                        </React.Fragment>
-                                )}
+                                <Link className="nav-item nav-link" to="/reports"> Reports </Link>
+                            )}
+                            {(user && user.id && user.role !== 'ADMIN') && (
+                                <React.Fragment>
+                                    <Link className="nav-item nav-link text-white" to="/favouritemovies"> Your favourites :) </Link>
+                                    <Link className="nav-item nav-link text-white" to="/profile"> Hi {user.firstname} !! </Link>
+                                    <Link className="nav-item nav-link text-white" onClick={this.logout} to="/home"> Log out </Link>
+                                </React.Fragment>
+                            )}
 
-                                {(user && user.role === 'ADMIN') && 
-                                        <React.Fragment>
-                                            <Link className="nav-item nav-link text-white" onClick={this.logout} to="/home"> Log out </Link>
-                                        </React.Fragment>}
+                            {(user && user.role === 'ADMIN') &&
+                                <React.Fragment>
+                                    <Link className="nav-item nav-link text-white" onClick={this.logout} to="/home"> Log out </Link>
+                                </React.Fragment>}
 
-                                {(!user) && (
-                                            <React.Fragment>
-                                                <Link className="nav-item nav-link text-white" to="/login"> Log In </Link>
-                                                <Link className="nav-item nav-link text-white" to="/register"> Sign Up </Link>
-                                            </React.Fragment>
-                                        )}
+                            {(!user) && (
+                                <React.Fragment>
+                                    <Link className="nav-item nav-link text-white" to="/login"> Log In </Link>
+                                    <Link className="nav-item nav-link text-white" to="/register"> Sign Up </Link>
+                                </React.Fragment>)}
                         </ul>
                     </div>
                 </nav>
-                </div>
+            </div>
         )
     }
 }

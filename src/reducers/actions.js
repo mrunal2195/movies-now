@@ -215,3 +215,31 @@ export const likeMovie = (userId, movie) => dispatch => {
         alert("Movie Has been added to your favourites:)")
     })
 }
+
+export const getRecentlyLikedMovies = () => dispatch => {
+    userservice.getRecentlyLiked().then(movies => {
+        dispatch({
+            type: 'RECENTLY_LIKED_MOVIES',
+            payload: movies
+        })
+    })
+}
+
+export const getAnotherUser = (id) => async dispatch => {
+    const user = await userservice.getAnotherUser(id);
+    const movies = await userservice.getUsermovies(id);
+    user.movies = movies;
+    dispatch({
+        type: "GET_ANOTHER_USER",
+        payload: user
+    })
+}
+
+export const unlikeMovie = (movieid, userid) => dispatch => {
+    userservice.unlikeMovie(movieid, userid).then(movie => {
+        dispatch({
+            type: 'UNLIKE_MOVIE',
+            payload: movie
+        })
+    })
+}

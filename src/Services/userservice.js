@@ -61,6 +61,15 @@ const likeMovie = (userId, movie) => endpoint.post(`/api/users/${userId}/movie`,
   })
   .catch(err => alert(err.message));
 
+const unlikeMovie = (movieid, userid) => endpoint.delete(`/api/users/${userid}/movie/${movieid}`)
+  .then(response => response.data).then(movie => lowerCaseKeys(movie))
+  .then(movie => {
+    if(!movie)
+      throw new Error("Movie is already deleted")
+    return movie
+  })
+  .catch(err => alert(err.message))
+
 const getUsermovies = (userId) => endpoint.get(`/api/users/${userId}/movie`)
   .then(response => response.data).then(movies => movies.map(m => lowerCaseKeys(m)))
   .catch(err => console.log(err));
@@ -92,6 +101,14 @@ const deleteUser = (userId) => endpoint.delete(`/api/users/${userId}`)
   .then(response => response.data)
   .catch(err => console.log(err))
 
+const getRecentlyLiked = () => endpoint.get('/api/movie/recentlyliked')
+  .then(response => response.data)
+  .catch(err => console.log(err))
+
+const getAnotherUser = (userid) => endpoint.get(`api/users/${userid}`)
+  .then(response => response.data)
+  .catch(err => console.log(err));
+
 export default {
   registerUser,
   loginUser,
@@ -104,5 +121,8 @@ export default {
   getFollowedUsers,
   getMoviesOfFollowers,
   getAllUsersForAdmin,
-  deleteUser
+  deleteUser,
+  getRecentlyLiked,
+  getAnotherUser,
+  unlikeMovie
 }

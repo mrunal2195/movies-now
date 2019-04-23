@@ -2,6 +2,17 @@
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case 'RECENTLY_LIKED_MOVIES':
+            return({
+                ...state,
+                recentlyLiked: action.payload
+        })
+
+        case 'GET_ANOTHER_USER':
+            return({
+                ...state,
+                userProfile: action.payload
+            })
         case 'LOAD_MOVIES':
             return ({
                 ...state,
@@ -120,6 +131,12 @@ const reducer = (state, action) => {
             return({
                 ...state,
                 nonAdminUsers: action.payload
+            })
+
+        case 'UNLIKE_MOVIE':
+            return({
+                ...state,
+                usermovies: state.usermovies.filter(m => m.id !== action.payload.id)
             })
 
         default:

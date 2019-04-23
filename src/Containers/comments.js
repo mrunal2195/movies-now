@@ -15,16 +15,16 @@ class Comment extends Component {
         this.props.getComments(this.props.imdbid);
     }
 
-    changeProp = prop => e =>{
+    changeProp = prop => e => {
         this.setState({
-            [prop] : e.target.value
+            [prop]: e.target.value
         })
     }
 
     renderComments = () => {
         const comments = this.props.comments || [];
-        const renderComments = comments.map(comment => 
-        <CommentCard key={comment.id} comment={comment} imdbid={this.props.imdbid}/>)
+        const renderComments = comments.map(comment =>
+            <CommentCard key={comment.id} comment={comment} imdbid={this.props.imdbid} />)
         return renderComments;
     }
 
@@ -48,14 +48,24 @@ class Comment extends Component {
             <div className="comments-section">
                 <h2>Comments</h2>
                 {this.renderComments()}
-                <div className="form">
-                    <div className="form-group">
-                        <textarea className="form-control comment-editor" rows="3" 
-                            placeholder="write your comment here" onChange={this.changeProp('comment')} value={this.state.comment}>
-                        </textarea>
-                        <button className="btn btn-dark mb-2 float-right" onClick={this.addComment}>comment</button>
-                    </div>
-                </div>
+                {(this.props.user) ?
+                    (<React.Fragment>
+                        <div className="form">
+                            <div className="form-group">
+                                <textarea className="form-control comment-editor" rows="3"
+                                    placeholder="write your comment here" onChange={this.changeProp('comment')} value={this.state.comment}>
+                                </textarea>
+                                <button className="btn btn-dark mb-2 float-right" onClick={this.addComment}>comment</button>
+                            </div>
+                        </div>
+                    </React.Fragment>) : (
+                        <React.Fragment>
+                            <div class="alert alert-success login-alert" role="alert">
+                                Please log in to leave a comment !!
+                            </div>
+                        </React.Fragment>
+                    )
+                }
             </div>
         )
     }

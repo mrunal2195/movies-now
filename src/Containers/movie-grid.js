@@ -6,7 +6,15 @@ export default class MovieGrid extends Component {
 
   renderMovies = () => {
     let movies = this.props.movies || [];
-    return movies.map(movie =>
+    let filteredMovies = [];
+    const movieIds = new Set();
+    movies.forEach(movie => {
+      if(movieIds.has(movie.imdbid))
+        return
+      filteredMovies.push(movie);
+      movieIds.add(movie.imdbid)
+    });
+    return filteredMovies.map(movie =>
       <MovieCard key={movie.imdbid} movie={movie} />)
   }
 

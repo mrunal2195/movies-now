@@ -4,7 +4,7 @@ import '../styles/home.css';
 import MovieGrid from './movie-grid';
 import UserListAdmin from './user-list-admin';
 import { connect } from 'react-redux';
-import { loadMovies,getAllUsersForAdmin,deleteUser } from '../reducers/actions';
+import { loadMovies,getAllUsersForAdmin, getRecentlyLikedMovies } from '../reducers/actions';
 
 class Home extends Component {
 
@@ -23,6 +23,7 @@ class Home extends Component {
 
     componentWillMount(){
         this.props.getMovies();
+        this.props.getRecentMovies();
     }
 
 
@@ -47,7 +48,7 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <MovieGrid movies={this.props.movies}></MovieGrid>
+                    <MovieGrid movies={this.props.recentMovies}></MovieGrid>
                     {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
                 </div>
             </div>
@@ -58,12 +59,14 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-       movies : state.movies,
-       allUsersForAdmin: state.nonAdminUsers
+    recentMovies: state.recentlyLiked,    
+    movies : state.movies,
+    allUsersForAdmin: state.nonAdminUsers
     })
 };
 
 const mapDispatchToProps = (dispatch) => ({
+    getRecentMovies : () => dispatch(getRecentlyLikedMovies()),
     getMovies: () => dispatch(loadMovies()),
     getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin())
    
