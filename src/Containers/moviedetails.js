@@ -33,12 +33,8 @@ class MovieDetails extends Component {
         {this.props.movie &&
           <div className="container movie-detail">
             <div className="row">
-              <div className="col-lg-3 col-md-4 col-sm-12 justify-content-center">
-                <div>
-                  <img className="card-img-top movie-poster" src={this.props.movie.poster} alt="Image is not available" />
-                </div>
-                <div>
-                </div>
+              <div className="col-lg-3 col-md-4 col-sm-12">
+                <img className="card-img-top movie-poster" src={this.props.movie.poster} alt="Image is not available" />
               </div>
               <div className="col-lg-6 col-md-8 col-sm-12">
                 <div className="movie-title">

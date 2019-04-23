@@ -34,8 +34,7 @@
 }
 
 .movie-poster{
-    max-height: 350px;
-    width: auto;
+    width: 100%;
 }
 
 .poster-div{

@@ -100,7 +100,6 @@ class Register extends Component {
                                 <select className="form-control" id="exampleFormControlSelect1" onChange={this.changeProp('role')}>
                                     <option value="VIEWER">Viewer</option>
                                     <option value="MODERATOR">Moderator</option>
-                                    <option value="ADMIN">Admin</option>
                                 </select>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ export default class MovieGrid extends Component {
 
   render() {
     return (
-      <div className="d-flex flex-wrap justify-content-between mt-3">
+      <div className="d-flex flex-wrap justify-content-start mt-3">
         {this.renderMovies()}
       </div>
     )

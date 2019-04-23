@@ -4,24 +4,24 @@ import '../styles/home.css';
 import MovieGrid from './movie-grid';
 import UserListAdmin from './user-list-admin';
 import { connect } from 'react-redux';
-import { loadMovies,getAllUsersForAdmin, getRecentlyLikedMovies } from '../reducers/actions';
+import { loadMovies, getAllUsersForAdmin, getRecentlyLikedMovies } from '../reducers/actions';
 
 class Home extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            searchWord : ""
+            searchWord: ""
         }
     }
 
     changeProp = prop => e => {
         this.setState({
-            [prop] : e.target.value
+            [prop]: e.target.value
         })
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.getMovies();
         this.props.getRecentMovies();
     }
@@ -38,15 +38,18 @@ class Home extends Component {
                                     placeholder="search movie here ...." aria-label="Movie Title"
                                     aria-describedby="button-addon2" onChange={this.changeProp('searchWord')} />
                                 <div className="input-group-append">
-                                <Link to={`/search/${this.state.searchWord}`}>
-                                    <button className="btn btn-secondary add-new-course-btn"
-                                        type="button" id="button-addon2">
-                                       Search
+                                    <Link to={`/search/${this.state.searchWord}`}>
+                                        <button className="btn btn-secondary add-new-course-btn"
+                                            type="button" id="button-addon2">
+                                            Search
                                     </button>
-                                </Link>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="d-flex flex-wrap justify-content-between mt-3">
+                       <h3>Recently added movie.....</h3>
                     </div>
                     <MovieGrid movies={this.props.recentMovies}></MovieGrid>
                     {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
@@ -59,17 +62,17 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-    recentMovies: state.recentlyLiked,    
-    movies : state.movies,
-    allUsersForAdmin: state.nonAdminUsers
+        recentMovies: state.recentlyLiked,
+        movies: state.movies,
+        allUsersForAdmin: state.nonAdminUsers
     })
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getRecentMovies : () => dispatch(getRecentlyLikedMovies()),
+    getRecentMovies: () => dispatch(getRecentlyLikedMovies()),
     getMovies: () => dispatch(loadMovies()),
     getAllUsersForAdmin: () => dispatch(getAllUsersForAdmin())
-   
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

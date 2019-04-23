@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const endpoint = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'https://stark-sands-39906.herokuapp.com/',
   withCredentials: true
 });
 
@@ -76,7 +76,13 @@ const getUsermovies = (userId) => endpoint.get(`/api/users/${userId}/movie`)
 
 const followUser = (userId, followeeId) => endpoint.post(`/api/users/${userId}/follow/${followeeId}`)
   .then(response => response.data)
-  .catch(err => console.log(err));
+  .then(user => {
+    if(user == null){
+      throw new Error("User can't follow itself");
+    }else
+      return user;
+  })
+  .catch(err => alert(err));
 
 const unfollowUser = (userId, followeeId) => endpoint.delete(`/api/users/${userId}/unfollow/${followeeId}`)
   .then(response => response.data)

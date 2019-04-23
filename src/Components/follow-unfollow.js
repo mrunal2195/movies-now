@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {followUser, unfollowUser} from '../reducers/actions';
+import { followUser, unfollowUser } from '../reducers/actions';
 import '../styles/moviedetail.css';
 
 class Follow extends Component {
@@ -12,22 +12,24 @@ class Follow extends Component {
     unfollowUser = () => {
         this.props.unfollowUser(this.props.user.id, this.props.followeeId);
     }
-  
+
     render() {
-    console.log(this.props.followedUsers);
-    const isFollow = this.props.followedUsers.find(f => f.id === this.props.followeeId);
-    return (
-      <div>
-        {(isFollow) &&
-            <i className="fas fa-user-plus unfollow" onClick={this.unfollowUser}></i>
+        if (this.props.user && this.props.user.id === this.props.followeeId) {
+            return null;
         }
-        {(!isFollow) &&
-            <i className="far fa-user follow" onClick={this.followUser}></i>
-        }
-      
-      </div>
-    )
-  }
+        const isFollow = this.props.followedUsers.find(f => f.id === this.props.followeeId);
+        return (
+            <div>
+                {(isFollow) &&
+                    <i className="fas fa-user-plus unfollow" onClick={this.unfollowUser}></i>
+                }
+                {(!isFollow) &&
+                    <i className="far fa-user follow" onClick={this.followUser}></i>
+                }
+
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => ({

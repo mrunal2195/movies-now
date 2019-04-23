@@ -5,28 +5,23 @@ import { loginUser, getFollowedUsers } from '../reducers/actions'
 class Login extends Component {
 
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            username:"",
-            password:""
+            username: "",
+            password: ""
         }
     }
 
     componentDidUpdate = () => {
-        if(this.props.user){
-            this.props.user.role === 'ADMIN' ? 
-                this.props.history.push('/home') :
-                this.props.history.push('/favouritemovies');
+        if (this.props.user) {
+            this.props.history.push('/home')
         }
-        // else{
-        //     alert("Please Enter correct username and password");
-        // }
     }
-
+    
     changeProp = prop => e => {
         this.setState({
-            [prop] : e.target.value
+            [prop]: e.target.value
         })
     }
 
@@ -48,8 +43,8 @@ class Login extends Component {
                                 Username
                         </label>
                             <div className="col-sm-6">
-                                <input className="form-control" id="wbdv-username" placeholder="Alice" 
-                                    onChange={this.changeProp('username')}/>
+                                <input className="form-control" id="wbdv-username" placeholder="Alice"
+                                    onChange={this.changeProp('username')} />
                             </div>
                         </div>
                         <div className="form-group row">
@@ -57,15 +52,15 @@ class Login extends Component {
                                 Password
                            </label>
                             <div className="col-sm-6">
-                                <input type="password" className="form-control wbdv-password-fld" id="wbdv-password" 
-                                placeholder="123qwe#$%" onChange={this.changeProp('password')}/>
+                                <input type="password" className="form-control wbdv-password-fld" id="wbdv-password"
+                                    placeholder="123qwe#$%" onChange={this.changeProp('password')} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-2 col-form-label"></label>
                             <div className="col-sm-6">
                                 <button className="btn btn-secondary btn-block wbdv-login" id="sign-in"
-                                onClick={this.loginUser}>Sign In </button>
+                                    onClick={this.loginUser}>Sign In </button>
                                 <div className="row">
                                     <div className="col-6">
                                     </div>

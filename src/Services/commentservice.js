@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const endpoint = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'https://stark-sands-39906.herokuapp.com/',
   withCredentials: true
 });
 
