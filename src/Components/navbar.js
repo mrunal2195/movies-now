@@ -19,7 +19,7 @@ class Navbar extends Component {
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                         <span className="navbar-toggler-icon"></span>
                     </button>    
-                    <div className="navbar-collapse collapse flex-fill dual-collapse2">
+                    <div className="navbar-collapse collapse dual-collapse2">
                         <ul className="navbar-nav ml-auto ">
                             {(user && user.id && user.role === 'MODERATOR') && (
                                     <Link className="nav-item nav-link" to="/reports"> Reports </Link>
