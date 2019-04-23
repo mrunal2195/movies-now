@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const imdb = axios.create({
-  baseURL: 'http://www.omdbapi.com/',
+  baseURL: 'https://www.omdbapi.com/',
   params: {
     apikey: '4d8f55e6'
   }
