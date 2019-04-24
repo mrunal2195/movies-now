@@ -228,7 +228,9 @@ export const getRecentlyLikedMovies = () => dispatch => {
 export const getAnotherUser = (id) => async dispatch => {
     const user = await userservice.getAnotherUser(id);
     const movies = await userservice.getUsermovies(id);
+    const follows = await userservice.getFollowedUsers(id);
     user.movies = movies;
+    user.follows = follows;
     dispatch({
         type: "GET_ANOTHER_USER",
         payload: user

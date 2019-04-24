@@ -49,7 +49,7 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="d-flex flex-wrap justify-content-between mt-3">
-                       <h3>Recently added movie.....</h3>
+                       <h3>Recently added movies.....</h3>
                     </div>
                     <MovieGrid movies={this.props.recentMovies}></MovieGrid>
                     {(this.props.user && this.props.user.role === 'ADMIN') && (<UserListAdmin allUsersForAdmin={this.props.allUsersForAdmin}></UserListAdmin>)}
